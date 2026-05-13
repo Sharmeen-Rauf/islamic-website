@@ -12,6 +12,7 @@ import EducationPage from './components/EducationPage';
 import WelfarePage from './components/WelfarePage';
 import EventsPage from './components/EventsPage';
 import MissionPage from './components/MissionPage';
+import ToursPage from './components/ToursPage';
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from 'lucide-react';
 
 function Footer() {
@@ -103,6 +104,8 @@ export default function App() {
         return <KhakiPage />;
       case 'mission':
         return <MissionPage onNavigate={setCurrentPage} />;
+      case 'tours':
+        return <ToursPage />;
       case 'about':
         return <AboutPage onNavigate={setCurrentPage} />;
       case 'education':

@@ -11,7 +11,9 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [eventsDropdownOpen, setEventsDropdownOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileEventsOpen, setMobileEventsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -23,6 +25,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
     onNavigate(page);
     setMobileMenuOpen(false);
     setAboutDropdownOpen(false);
+    setEventsDropdownOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -86,7 +89,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute top-full left-0 w-48 glass-dark rounded-2xl py-3 px-2 border border-white/10 shadow-2xl z-50 flex flex-col gap-1"
+                className="absolute top-full left-0 w-48 glass-dark rounded-2xl py-3 px-2 border border-white/10 shadow-2xl z-50 flex flex-col gap-1 bg-slate-950/95 backdrop-blur-2xl"
               >
                 <button
                   onClick={() => handleNav('about')}
@@ -118,13 +121,103 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
             <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-gold transition-all ${currentPage === 'khaki' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
           </button>
 
-          <button
-            onClick={() => handleNav('events')}
-            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'events' ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+          {/* Events & Tours Mega Dropdown */}
+          <div 
+            className="relative py-2"
+            onMouseEnter={() => setEventsDropdownOpen(true)}
+            onMouseLeave={() => setEventsDropdownOpen(false)}
           >
-            Events
-            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${currentPage === 'events' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
-          </button>
+            <button
+              onClick={() => handleNav('events')}
+              className={`px-4 py-2 text-[10px] uppercase tracking-widest flex items-center gap-1 transition-colors relative ${['events', 'tours'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+            >
+              Events & Tours <ChevronDown size={12} />
+              <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${['events', 'tours'].includes(currentPage) ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+            </button>
+
+            {eventsDropdownOpen && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="absolute top-full left-1/2 -translate-x-1/2 w-[650px] glass-dark rounded-3xl p-8 border border-white/10 shadow-2xl z-50 grid grid-cols-3 gap-8 bg-slate-950/95 backdrop-blur-2xl"
+              >
+                {/* Column 1 */}
+                <div className="space-y-4">
+                  <h4 className="text-[10px] font-bold text-brand-gold uppercase tracking-[3px] border-b border-white/10 pb-2">
+                    Darbar Sharif
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {[
+                      'Urs Hazrat Khaki Shah RA',
+                      'Urs Imam Hussain RA',
+                      '3 Day Spiritual Retreat',
+                      'Friday Prayer',
+                      'Eid-ul-Adha',
+                      'Eid-ul-Fitr'
+                    ].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleNav('events')}
+                          className="text-left text-xs text-slate-300 hover:text-brand-gold transition-colors block py-0.5"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Column 2 */}
+                <div className="space-y-4">
+                  <h4 className="text-[10px] font-bold text-brand-pink uppercase tracking-[3px] border-b border-white/10 pb-2">
+                    National Visits
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {[
+                      'Lahore',
+                      'Karachi',
+                      'Islamabad',
+                      'Mian Channu',
+                      'Wah Cantt'
+                    ].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleNav('tours')}
+                          className="text-left text-xs text-slate-300 hover:text-brand-pink transition-colors block py-0.5"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Column 3 */}
+                <div className="space-y-4">
+                  <h4 className="text-[10px] font-bold text-brand-blue uppercase tracking-[3px] border-b border-white/10 pb-2">
+                    International Visits
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {[
+                      'Europe',
+                      'United Kingdom',
+                      'Turkey',
+                      'South Africa'
+                    ].map((item) => (
+                      <li key={item}>
+                        <button
+                          onClick={() => handleNav('tours')}
+                          className="text-left text-xs text-slate-300 hover:text-brand-blue transition-colors block py-0.5"
+                        >
+                          {item}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </div>
 
           <button
             onClick={() => handleNav('literature')}
@@ -211,12 +304,37 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
             Syed Rasool Shah Khaki
           </button>
 
-          <button 
-            onClick={() => handleNav('events')}
-            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'events' ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
-          >
-            Events
-          </button>
+          <div className="w-full flex flex-col items-center">
+            <button 
+              onClick={() => setMobileEventsOpen(!mobileEventsOpen)}
+              className={`py-2 text-xs uppercase tracking-[3px] flex items-center gap-2 ${['events', 'tours'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+            >
+              Events & Tours {mobileEventsOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+            
+            {mobileEventsOpen && (
+              <div className="flex flex-col gap-3 py-3 w-full bg-white/5 rounded-2xl my-2">
+                <button 
+                  onClick={() => handleNav('events')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'events' ? 'text-brand-gold font-bold' : 'text-slate-400'}`}
+                >
+                  Darbar Sharif Events
+                </button>
+                <button 
+                  onClick={() => handleNav('tours')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'tours' ? 'text-brand-pink font-bold' : 'text-slate-400'}`}
+                >
+                  National Visits
+                </button>
+                <button 
+                  onClick={() => handleNav('tours')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'tours' ? 'text-brand-blue font-bold' : 'text-slate-400'}`}
+                >
+                  International Visits
+                </button>
+              </div>
+            )}
+          </div>
 
           <button 
             onClick={() => handleNav('literature')}
