@@ -1,10 +1,17 @@
 import { motion } from 'motion/react';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-export default function Header() {
+interface HeaderProps {
+  currentPage?: string;
+  onNavigate?: (page: string) => void;
+}
+
+export default function Header({ currentPage = 'home', onNavigate = () => {} }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -12,13 +19,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Mission', href: '#mission' },
-    { name: 'Events', href: '#events' },
-    { name: 'Tours', href: '#tours' },
-    { name: 'Literature', href: '#literature' },
-  ];
+  const handleNav = (page: string) => {
+    onNavigate(page);
+    setMobileMenuOpen(false);
+    setAboutDropdownOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header 
@@ -27,11 +33,11 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <motion.a 
-          href="#"
+        <motion.div 
+          onClick={() => handleNav('home')}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3 group cursor-pointer"
         >
           <div className="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform overflow-hidden bg-black/20">
             <img src="/logo (6).png" alt="Muhabbat Mission Logo" className="w-full h-full object-contain p-1" />
@@ -42,31 +48,98 @@ export default function Header() {
             </h1>
             <p className="text-[10px] text-slate-400 uppercase tracking-tighter">International</p>
           </div>
-        </motion.a>
+        </motion.div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link, i) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="px-4 py-2 text-[10px] uppercase tracking-widest text-slate-300 hover:text-brand-pink transition-colors relative group"
+          <button
+            onClick={() => handleNav('home')}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'home' ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+          >
+            Home
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${currentPage === 'home' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+          </button>
+
+          <button
+            onClick={() => handleNav('mission')}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'mission' ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+          >
+            Mission
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${currentPage === 'mission' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+          </button>
+
+          {/* About Us Dropdown */}
+          <div 
+            className="relative py-2"
+            onMouseEnter={() => setAboutDropdownOpen(true)}
+            onMouseLeave={() => setAboutDropdownOpen(false)}
+          >
+            <button
+              onClick={() => handleNav('about')}
+              className={`px-4 py-2 text-[10px] uppercase tracking-widest flex items-center gap-1 transition-colors relative ${['about', 'education', 'welfare'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
             >
-              {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-brand-pink transition-all group-hover:w-1/2" />
-            </motion.a>
-          ))}
-          <motion.a 
+              About Us <ChevronDown size={12} />
+              <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${['about', 'education', 'welfare'].includes(currentPage) ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+            </button>
+
+            {aboutDropdownOpen && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="absolute top-full left-0 w-48 glass-dark rounded-2xl py-3 px-2 border border-white/10 shadow-2xl z-50 flex flex-col gap-1"
+              >
+                <button
+                  onClick={() => handleNav('about')}
+                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'about' ? 'bg-brand-pink text-white font-bold' : 'text-slate-300 hover:bg-white/5 hover:text-brand-pink'}`}
+                >
+                  About Us Core
+                </button>
+                <button
+                  onClick={() => handleNav('education')}
+                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'education' ? 'bg-brand-green text-black font-bold' : 'text-slate-300 hover:bg-white/5 hover:text-brand-green'}`}
+                >
+                  Education
+                </button>
+                <button
+                  onClick={() => handleNav('welfare')}
+                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'welfare' ? 'bg-brand-blue text-black font-bold' : 'text-slate-300 hover:bg-white/5 hover:text-brand-blue'}`}
+                >
+                  Welfare
+                </button>
+              </motion.div>
+            )}
+          </div>
+
+          <button
+            onClick={() => handleNav('khaki')}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'khaki' ? 'text-brand-gold font-bold' : 'text-slate-300 hover:text-brand-gold'}`}
+          >
+            Syed Rasool Shah Khaki
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-gold transition-all ${currentPage === 'khaki' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+          </button>
+
+          <button
+            onClick={() => handleNav('events')}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'events' ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+          >
+            Events
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${currentPage === 'events' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+          </button>
+
+          <button
+            onClick={() => handleNav('literature')}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'literature' ? 'text-brand-gold font-bold' : 'text-slate-300 hover:text-brand-gold'}`}
+          >
+            Literature
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-gold transition-all ${currentPage === 'literature' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+          </button>
+
+          <a 
             href="#contact"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
             className="ml-4 px-6 py-2 rounded-full bg-gradient-to-r from-brand-pink to-brand-pink/80 text-[10px] uppercase font-bold tracking-[2px] text-white shadow-lg shadow-brand-pink/20 hover:shadow-brand-pink/40 hover:-translate-y-0.5 transition-all"
           >
             Connect
-          </motion.a>
+          </a>
         </nav>
 
         {/* Mobile Menu Toggle */}
@@ -83,22 +156,79 @@ export default function Header() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 w-full glass-dark border-t border-white/5 py-8 px-6 md:hidden text-center"
+          className="absolute top-full left-0 w-full glass-dark border-t border-white/5 py-8 px-6 md:hidden flex flex-col items-center gap-4 text-center z-50 max-h-[80vh] overflow-y-auto"
         >
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block py-4 text-xs uppercase tracking-[3px] text-slate-300 hover:text-brand-pink"
+          <button 
+            onClick={() => handleNav('home')}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'home' ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+          >
+            Home
+          </button>
+
+          <button 
+            onClick={() => handleNav('mission')}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'mission' ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+          >
+            Mission
+          </button>
+
+          <div className="w-full flex flex-col items-center">
+            <button 
+              onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+              className={`py-2 text-xs uppercase tracking-[3px] flex items-center gap-2 ${['about', 'education', 'welfare'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
             >
-              {link.name}
-            </a>
-          ))}
+              About Us {mobileAboutOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </button>
+            
+            {mobileAboutOpen && (
+              <div className="flex flex-col gap-3 py-3 w-full bg-white/5 rounded-2xl my-2">
+                <button 
+                  onClick={() => handleNav('about')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'about' ? 'text-brand-pink font-bold' : 'text-slate-400'}`}
+                >
+                  About Us Core
+                </button>
+                <button 
+                  onClick={() => handleNav('education')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'education' ? 'text-brand-green font-bold' : 'text-slate-400'}`}
+                >
+                  Education
+                </button>
+                <button 
+                  onClick={() => handleNav('welfare')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'welfare' ? 'text-brand-blue font-bold' : 'text-slate-400'}`}
+                >
+                  Welfare
+                </button>
+              </div>
+            )}
+          </div>
+
+          <button 
+            onClick={() => handleNav('khaki')}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'khaki' ? 'text-brand-gold font-bold' : 'text-slate-300'}`}
+          >
+            Syed Rasool Shah Khaki
+          </button>
+
+          <button 
+            onClick={() => handleNav('events')}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'events' ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+          >
+            Events
+          </button>
+
+          <button 
+            onClick={() => handleNav('literature')}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'literature' ? 'text-brand-gold font-bold' : 'text-slate-300'}`}
+          >
+            Literature
+          </button>
+
           <a 
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="mt-4 block py-4 text-xs uppercase tracking-[3px] font-bold text-brand-pink"
+            className="mt-4 py-3 px-8 rounded-full bg-brand-pink text-xs uppercase tracking-[3px] font-bold text-white shadow-lg"
           >
             Connect
           </a>

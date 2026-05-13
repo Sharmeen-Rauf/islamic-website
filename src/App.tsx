@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -5,6 +6,12 @@ import AyatQuote from './components/AyatQuote';
 import Mission from './components/Mission';
 import VideoShowcase from './components/VideoShowcase';
 import Books from './components/Books';
+import KhakiPage from './components/KhakiPage';
+import AboutPage from './components/AboutPage';
+import EducationPage from './components/EducationPage';
+import WelfarePage from './components/WelfarePage';
+import EventsPage from './components/EventsPage';
+import MissionPage from './components/MissionPage';
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from 'lucide-react';
 
 function Footer() {
@@ -88,21 +95,52 @@ function Footer() {
 }
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderView = () => {
+    switch (currentPage) {
+      case 'khaki':
+        return <KhakiPage />;
+      case 'mission':
+        return <MissionPage onNavigate={setCurrentPage} />;
+      case 'about':
+        return <AboutPage onNavigate={setCurrentPage} />;
+      case 'education':
+        return <EducationPage />;
+      case 'welfare':
+        return <WelfarePage />;
+      case 'events':
+        return <EventsPage onNavigate={setCurrentPage} />;
+      case 'literature':
+        return (
+          <div className="pt-20">
+            <Books />
+          </div>
+        );
+      case 'home':
+      default:
+        return (
+          <>
+            <Hero />
+            <AyatQuote />
+            <Mission />
+            <Showcase />
+            <Books />
+            <VideoShowcase />
+          </>
+        );
+    }
+  };
+
   return (
     <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <AyatQuote />
-      <Mission />
-      <Showcase />
-      <Books />
-      <VideoShowcase />
+      <Header currentPage={currentPage} onNavigate={setCurrentPage} />
+      {renderView()}
       <Footer />
     </div>
   );
 }
 
-// Helper component for generic showcase elements if needed, otherwise I'll just use the ones I defined.
 function Showcase() {
   return (
     <section className="py-24 glass-dark relative overflow-hidden">
