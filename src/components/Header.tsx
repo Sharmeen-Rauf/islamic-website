@@ -33,8 +33,8 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 group"
         >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-pink to-brand-blue flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform">
-            <span className="font-arabic text-xl text-white">م</span>
+          <div className="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform overflow-hidden bg-black/20">
+            <img src="/logo (6).png" alt="Muhabbat Mission Logo" className="w-full h-full object-contain p-1" />
           </div>
           <div className="hidden sm:block">
             <h1 className="font-display text-xs tracking-widest text-white leading-tight">

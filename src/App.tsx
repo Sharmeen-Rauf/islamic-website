@@ -14,8 +14,8 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1 lg:col-span-1">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-pink to-brand-blue flex items-center justify-center border border-white/20 shadow-lg">
-                <span className="font-arabic text-xl text-white">م</span>
+              <div className="w-12 h-12 rounded-full glass flex items-center justify-center border border-white/20 shadow-lg overflow-hidden bg-black/20">
+                <img src="/logo (6).png" alt="Muhabbat Mission Logo" className="w-full h-full object-contain p-1" />
               </div>
               <div>
                 <h1 className="font-display text-xs tracking-widest text-white leading-tight">
