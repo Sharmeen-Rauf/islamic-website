@@ -29,12 +29,12 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
       desc: 'Held annually on the 10th of Muharram, this sacred event commemorates the unparalleled legacy of Imam Hussain (Alayhi Salam) and His Family\'s (Alayhi Salam) supreme sacrifice. Imam Hussain Alayhi Salam stands as a hero and role model for all, regardless of faith, exemplifying courage, justice, and unwavering devotion to truth. Each year, a large number of seekers from Pakistan, USA, UK, and across Europe gather to honor His (Alayhi Salam) legacy and reflect on his enduring message.'
     },
     {
-      title: 'Urs of Syed Rasool Shah Khaki',
-      timing: 'Annual Commemoration',
+      title: '31st & Upcoming 32nd Urs Mubarak of Huzoor Syed Rasool Shah Khaki (R.A.)',
+      timing: 'Annual Commemoration (Upcoming: 32nd Annual Urs Mubarak)',
       image: '/02-ors-khaki-shah-29sep2024.jpg',
       color: 'brand-gold',
       hasKhakiLink: true,
-      desc: 'This sacred event honors the life and teachings of Syed Rasool Shah Khaki and serves as a profound reminder of the ultimate goal of the spiritual path — union with the Divine. The Urs includes a Qawwali session, where soulful music and poetic verses create an atmosphere of deep devotion, uplifting the hearts of the attendees and drawing them closer to the Divine. Following the Qawwali, Makhdoom Mahmood Mastwaar Qalandar delivers an inspiring speech, and the event concludes with a heartfelt prayer. Annually, about 100,000 seekers gather to participate in this spiritually enriching occasion.'
+      desc: 'The 31st Urs Mubarak of Huzoor Syed Rasool Shah Khaki Shah (R.A.), the Murshid of Majzooban, Qalandaran, and Salikaan and the source of Hidayah, was held under the supervision of Makhdoom Mahmood Mastwaar Qalandar. This sacred occasion is illuminated with mehfil-e-samaa (qawwali), and heartfelt duaa (supplications). It is a gathering of fuqara and ahl-e-dil, immersed in ishq-e-haqiqi (divine love) and striving for ma\'rifah (gnosis) through suhbat-e-awliya (company of saints). The Urs serves as a means of barakah (blessing), tajalli (divine manifestation), and islah-e-nafs (purification of the self), guiding seekers on the path of fana fi shaykh, fana fi rasool, and ultimately fana fi Allah, reconnecting hearts to the eternal ocean of divine presence. Annually, about 100,000 seekers gather to participate in this spiritually enriching occasion. Preparations are now underway for the upcoming 32nd Annual Urs Mubarak.'
     },
     {
       title: 'Seh Roza Chilla (Three-Day Retreat)',
