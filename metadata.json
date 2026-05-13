@@ -1,0 +1,6 @@
+{
+  "name": "Muhabbat Mission International",
+  "description": "The official spiritual platform of Makhdoom Mahmood Mastwaar Qalandar, dedicated to spreading love, peace, and spiritual awakening through the path of Tasawwuf.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
