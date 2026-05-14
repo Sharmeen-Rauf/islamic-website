@@ -36,7 +36,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
       }`}
     >
       {/* Ayatul Kursi Marquee */}
-      <div className="w-full py-1.5 bg-gradient-to-r from-brand-blue via-blue-600 to-brand-blue flex items-center overflow-hidden shadow-sm">
+      <div className="w-full py-1.5 bg-white flex items-center overflow-hidden border-b border-slate-100 shadow-sm relative">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 80 }}
@@ -45,10 +45,10 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
           {/* Double content for seamless loop */}
           {[1, 2].map((i) => (
             <div key={i} className="flex items-center gap-16 px-8">
-              <span className="font-arabic text-sm md:text-base text-white font-medium tracking-widest leading-none drop-shadow-sm">
+              <span className="font-arabic text-sm md:text-base font-bold tracking-widest leading-none drop-shadow-sm bg-gradient-to-r from-brand-blue via-brand-pink to-brand-gold bg-clip-text text-transparent">
                 اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ
               </span>
-              <span className="text-white/50 text-[10px]">✦</span>
+              <span className="text-brand-blue text-[10px]">♦</span>
             </div>
           ))}
         </motion.div>
