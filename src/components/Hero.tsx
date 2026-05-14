@@ -2,76 +2,141 @@ import { motion } from 'motion/react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
-      {/* Background Image & Overlay */}
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-slate-950">
+      
+      {/* Dynamic Background Image & Blur */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/12-darbar-lighting-08octo2022-ft-img.jpg" 
-          alt="Darbar Sharif Lighting" 
-          className="w-full h-full object-cover opacity-30 object-center"
+          src="/bg-overlay.jpg" 
+          alt="Atmospheric Background" 
+          className="w-full h-full object-cover opacity-10 mix-blend-screen"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/80 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/80 to-slate-950" />
       </div>
 
-      {/* Background Gradients */}
-      <div className="absolute inset-0 z-0 mix-blend-overlay">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-brand-pink/30 blur-[120px] animate-pulse" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-brand-blue/30 blur-[100px] animation-delay-2000" />
-        <div className="absolute bottom-[-10%] left-[30%] w-[300px] h-[300px] rounded-full bg-brand-gold/20 blur-[80px]" />
+      {/* Vibrant Orbs for aesthetic lighting */}
+      <div className="absolute inset-0 z-0 mix-blend-screen">
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full bg-brand-pink/20 blur-[150px]" 
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-[-10%] left-[5%] w-[500px] h-[500px] rounded-full bg-brand-gold/10 blur-[150px]" 
+        />
       </div>
 
-      {/* Decorative Ornaments */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-        <svg className="w-[800px] h-[800px] animate-spin-slow text-brand-gold" viewBox="0 0 200 200">
-           <polygon points="100,10 190,55 190,145 100,190 10,145 10,55" fill="none" stroke="currentColor" strokeWidth="1"/>
-           <polygon points="100,30 170,65 170,135 100,170 30,135 30,65" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-        </svg>
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block glass px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[3px] text-brand-gold font-semibold border border-brand-gold/30 mb-8 shadow-lg shadow-brand-gold/20">
-            ✦ Est. 1994 · Global Spiritual Mission ✦
-          </span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex-1 flex flex-col justify-center">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-10">
           
-          <h2 className="font-arabic text-3xl md:text-4xl text-brand-gold mb-2 tracking-[4px] opacity-60">
-            مُحَبَّت مِشَن اِنْٹَرنیشنل
-          </h2>
-          
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 drop-shadow-2xl">
-            <span className="text-gradient-pink">MUHABBAT</span><br />
-            <span className="text-brand-green">MISSION</span>
-          </h1>
-          
-          <p className="font-serif italic text-lg md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto">
-            Where Love is not just a word — it is a way of life.
-          </p>
+          {/* Left Content - Typography */}
+          <motion.div 
+            className="flex-1 text-center lg:text-left z-20"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 }
+              }
+            }}
+          >
+            {/* Urdu Calligraphy */}
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="font-arabic text-brand-gold text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-4 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+            >
+              قلندر دوراں، شیخ کامل، صوفی شاعر، سفیر محبت الہی
+            </motion.div>
+            
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="font-arabic text-brand-gold text-4xl md:text-6xl lg:text-7xl font-bold mb-8 drop-shadow-[0_0_20px_rgba(212,175,55,0.6)]"
+            >
+              مخدوم محمود مستوار قلندر
+            </motion.div>
 
-          <p className="text-sm md:text-base leading-relaxed text-slate-300 max-w-xl mx-auto mb-12 opacity-90 drop-shadow-lg">
-            Founded by Makhdoom Mahmood Mastwaar Qalandar, MMI is dedicated to spreading 
-            love, peace, and spiritual awakening across all borders.
-          </p>
+            {/* English Typography */}
+            <motion.h2 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="font-display text-white text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide mb-3 drop-shadow-lg"
+            >
+              Makhdoom Mahmood <span className="text-gradient-pink">MASTWAAR</span> Qalandar
+            </motion.h2>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#mission" className="px-10 py-4 bg-brand-pink text-white rounded-full font-bold text-xs uppercase tracking-[2px] shadow-2xl shadow-brand-pink/40 hover:-translate-y-1 transition-all">
-              Explore Our Mission
-            </a>
-            <a href="#literature" className="px-10 py-4 glass text-white rounded-full font-bold text-xs uppercase tracking-[2px] border border-white/10 hover:bg-white/10 transition-all">
-              View Literature
-            </a>
-          </div>
-        </motion.div>
+            <motion.h3 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="text-brand-gold text-xl md:text-2xl font-serif italic mb-3"
+            >
+              The Reviver, Mystical Master, Sufi Poet
+            </motion.h3>
+
+            <motion.h4 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+              className="text-slate-300 font-medium mb-10 tracking-widest uppercase text-xs"
+            >
+              Ambassador of Divine Love
+            </motion.h4>
+
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+              }}
+            >
+              <a 
+                href="#mission" 
+                className="inline-block px-10 py-4 bg-brand-pink hover:bg-brand-pink/80 text-white rounded-full font-bold text-xs uppercase tracking-[2px] shadow-[0_0_30px_rgba(233,30,140,0.4)] hover:shadow-[0_0_40px_rgba(233,30,140,0.6)] transition-all hover:-translate-y-1"
+              >
+                Read More
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content - Image */}
+          <motion.div 
+            className="flex-1 relative z-10 w-full flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+          >
+            <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-2xl">
+              <img 
+                src="/peer-saab (2).png" 
+                alt="Makhdoom Mahmood Mastwaar Qalandar" 
+                className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20 relative"
+              />
+              {/* Elegant Glow behind image */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-pink/30 blur-[100px] rounded-full -z-10 mix-blend-screen" />
+            </div>
+          </motion.div>
+
+        </div>
 
         {/* Stats Grid */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
+          transition={{ delay: 1.2, duration: 1 }}
+          className="mt-20 w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
         >
           {[
             { label: 'Students', value: '100K+' },
@@ -79,12 +144,13 @@ export default function Hero() {
             { label: 'Since', value: '1994' },
             { label: 'Continents', value: '4+' },
           ].map((stat, i) => (
-            <div key={i} className="glass p-6 rounded-2xl">
+            <div key={i} className="glass p-6 rounded-2xl text-center">
               <div className="font-display text-2xl text-gradient-gold mb-1">{stat.value}</div>
-              <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">{stat.label}</div>
+              <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{stat.label}</div>
             </div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
