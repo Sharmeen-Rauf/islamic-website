@@ -47,12 +47,17 @@ export default function Hero() {
             {/* Urdu Calligraphy */}
             <motion.div 
               variants={{
-                hidden: { opacity: 0, y: 30 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                hidden: { opacity: 0, x: -30 },
+                visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: "easeOut" } }
               }}
-              className="font-arabic text-brand-gold text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-4 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+              className="font-arabic text-brand-gold text-lg md:text-xl lg:text-2xl leading-relaxed mb-4 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] whitespace-nowrap overflow-hidden"
             >
-              قلندر دوراں، شیخ کامل، صوفی شاعر، سفیر محبت الہی
+              <motion.span
+                animate={{ opacity: [0.5, 1, 0.5], textShadow: ["0px 0px 5px rgba(212,175,55,0.2)", "0px 0px 15px rgba(212,175,55,0.8)", "0px 0px 5px rgba(212,175,55,0.2)"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                قلندر دوراں، شیخ کامل، صوفی شاعر، سفیر محبت الہی
+              </motion.span>
             </motion.div>
             
             <motion.div 

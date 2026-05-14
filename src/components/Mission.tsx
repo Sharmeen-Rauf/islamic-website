@@ -34,10 +34,10 @@ export default function Mission() {
        <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
-              <span className="text-[10px] uppercase tracking-[5px] text-brand-pink font-bold">Our Vision</span>
-              <h2 className="font-display text-4xl text-white mt-4">Love is the Universal Language</h2>
+              <span className="text-[10px] uppercase tracking-[5px] text-brand-blue font-bold">Our Vision</span>
+              <h2 className="font-display text-4xl text-slate-900 mt-4">Love is the Universal Language</h2>
             </div>
-            <p className="text-slate-400 text-sm max-w-sm">
+            <p className="text-slate-600 text-sm max-w-sm">
               The Darbar Shareef welcomes everyone regardless of caste, creed, or religion.
             </p>
           </div>
@@ -50,13 +50,13 @@ export default function Mission() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="glass p-8 rounded-[32px] hover:bg-white/10 transition-all border-none relative group overflow-hidden"
+                className="bg-white border border-slate-100 shadow-sm p-8 rounded-[32px] hover:shadow-xl hover:-translate-y-1 transition-all relative group overflow-hidden"
               >
                 <div className={`w-14 h-14 rounded-2xl bg-${m.color}/10 flex items-center justify-center text-${m.color} mb-8 group-hover:scale-110 transition-transform`}>
                   {m.icon}
                 </div>
-                <h3 className="font-display text-lg text-white mb-4 italic tracking-wide">{m.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{m.desc}</p>
+                <h3 className="font-display text-lg text-slate-900 mb-4 italic tracking-wide">{m.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{m.desc}</p>
               </motion.div>
             ))}
           </div>

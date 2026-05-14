@@ -32,11 +32,11 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
   return (
     <header 
       className={`absolute top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-dark py-1 shadow-2xl' : 'bg-transparent py-2'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-1 border-b border-slate-200' : 'bg-transparent py-2'
       }`}
     >
       {/* Top Bar */}
-      <div className="w-full bg-slate-950/90 border-b border-white/5 py-2 px-6 text-xs text-slate-300 backdrop-blur-md hidden lg:block">
+      <div className="w-full bg-white/95 border-b border-slate-200 py-2 px-6 text-xs text-slate-700 backdrop-blur-md hidden lg:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <a href="tel:+12247166575" className="flex items-center gap-2 hover:text-brand-pink transition-colors">
@@ -62,7 +62,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
             <button
               onClick={() => handleNav('upcoming-events')}
-              className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-pink text-white font-bold tracking-widest uppercase text-[10px] hover:scale-105 transition-all shadow-lg shadow-brand-pink/20"
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-blue text-white font-bold tracking-widest uppercase text-[10px] hover:scale-105 transition-all shadow-lg shadow-brand-blue/20"
             >
               <Calendar size={12} /> Upcoming Events
             </button>
@@ -77,7 +77,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center group cursor-pointer"
         >
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full glass flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-105 transition-transform overflow-hidden bg-black/20 p-1">
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-md group-hover:scale-105 transition-transform overflow-hidden p-1">
             <img src="/logo (6).png" alt="Muhabbat Mission Logo" className="w-full h-full object-contain" />
           </div>
         </motion.div>
@@ -86,18 +86,18 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
         <nav className="hidden md:flex items-center gap-1">
           <button
             onClick={() => handleNav('home')}
-            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'home' ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'home' ? 'text-brand-blue font-bold' : 'text-slate-700 hover:text-brand-blue'}`}
           >
             Home
-            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${currentPage === 'home' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-blue transition-all ${currentPage === 'home' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
           </button>
 
           <button
             onClick={() => handleNav('mission')}
-            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'mission' ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'mission' ? 'text-brand-blue font-bold' : 'text-slate-700 hover:text-brand-blue'}`}
           >
             Mission
-            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${currentPage === 'mission' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+            <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-blue transition-all ${currentPage === 'mission' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
           </button>
 
           {/* About Us Dropdown */}
@@ -108,33 +108,33 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
           >
             <button
               onClick={() => handleNav('about')}
-              className={`px-4 py-2 text-[10px] uppercase tracking-widest flex items-center gap-1 transition-colors relative ${['about', 'education', 'welfare'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+              className={`px-4 py-2 text-[10px] uppercase tracking-widest flex items-center gap-1 transition-colors relative ${['about', 'education', 'welfare'].includes(currentPage) ? 'text-brand-blue font-bold' : 'text-slate-700 hover:text-brand-blue'}`}
             >
               About Us <ChevronDown size={12} />
-              <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${['about', 'education', 'welfare'].includes(currentPage) ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+              <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-blue transition-all ${['about', 'education', 'welfare'].includes(currentPage) ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
             </button>
 
             {aboutDropdownOpen && (
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute top-full left-0 w-48 glass-dark rounded-2xl py-3 px-2 border border-white/10 shadow-2xl z-50 flex flex-col gap-1 bg-slate-950/95 backdrop-blur-2xl"
+                className="absolute top-full left-0 w-48 bg-white rounded-2xl py-3 px-2 border border-slate-200 shadow-xl z-50 flex flex-col gap-1"
               >
                 <button
                   onClick={() => handleNav('about')}
-                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'about' ? 'bg-brand-pink text-white font-bold' : 'text-slate-300 hover:bg-white/5 hover:text-brand-pink'}`}
+                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'about' ? 'bg-brand-blue text-white font-bold' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-blue'}`}
                 >
                   About Us Core
                 </button>
                 <button
                   onClick={() => handleNav('education')}
-                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'education' ? 'bg-brand-green text-black font-bold' : 'text-slate-300 hover:bg-white/5 hover:text-brand-green'}`}
+                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'education' ? 'bg-brand-green text-black font-bold' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-green'}`}
                 >
                   Education
                 </button>
                 <button
                   onClick={() => handleNav('welfare')}
-                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'welfare' ? 'bg-brand-blue text-black font-bold' : 'text-slate-300 hover:bg-white/5 hover:text-brand-blue'}`}
+                  className={`text-left px-4 py-2 text-[10px] uppercase tracking-widest rounded-xl transition-all ${currentPage === 'welfare' ? 'bg-brand-blue text-white font-bold' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-blue'}`}
                 >
                   Welfare
                 </button>
@@ -144,7 +144,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
           <button
             onClick={() => handleNav('khaki')}
-            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'khaki' ? 'text-brand-gold font-bold' : 'text-slate-300 hover:text-brand-gold'}`}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'khaki' ? 'text-brand-gold font-bold' : 'text-slate-700 hover:text-brand-gold'}`}
           >
             Syed Rasool Shah Khaki
             <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-gold transition-all ${currentPage === 'khaki' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
@@ -158,21 +158,21 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
           >
             <button
               onClick={() => handleNav('events')}
-              className={`px-4 py-2 text-[10px] uppercase tracking-widest flex items-center gap-1 transition-colors relative ${['events', 'tours'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300 hover:text-brand-pink'}`}
+              className={`px-4 py-2 text-[10px] uppercase tracking-widest flex items-center gap-1 transition-colors relative ${['events', 'tours'].includes(currentPage) ? 'text-brand-blue font-bold' : 'text-slate-700 hover:text-brand-blue'}`}
             >
               Events & Tours <ChevronDown size={12} />
-              <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-pink transition-all ${['events', 'tours'].includes(currentPage) ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
+              <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-blue transition-all ${['events', 'tours'].includes(currentPage) ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
             </button>
 
             {eventsDropdownOpen && (
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute top-full left-1/2 -translate-x-1/2 w-[650px] glass-dark rounded-3xl p-8 border border-white/10 shadow-2xl z-50 grid grid-cols-3 gap-8 bg-slate-950/95 backdrop-blur-2xl"
+                className="absolute top-full left-1/2 -translate-x-1/2 w-[650px] bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl z-50 grid grid-cols-3 gap-8"
               >
                 {/* Column 1 */}
                 <div className="space-y-4">
-                  <h4 className="text-[10px] font-bold text-brand-gold uppercase tracking-[3px] border-b border-white/10 pb-2">
+                  <h4 className="text-[10px] font-bold text-brand-gold uppercase tracking-[3px] border-b border-slate-100 pb-2">
                     Darbar Sharif
                   </h4>
                   <ul className="space-y-2.5">
@@ -198,7 +198,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
                 {/* Column 2 */}
                 <div className="space-y-4">
-                  <h4 className="text-[10px] font-bold text-brand-pink uppercase tracking-[3px] border-b border-white/10 pb-2">
+                  <h4 className="text-[10px] font-bold text-brand-blue uppercase tracking-[3px] border-b border-slate-100 pb-2">
                     National Visits
                   </h4>
                   <ul className="space-y-2.5">
@@ -223,7 +223,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
                 {/* Column 3 */}
                 <div className="space-y-4">
-                  <h4 className="text-[10px] font-bold text-brand-blue uppercase tracking-[3px] border-b border-white/10 pb-2">
+                  <h4 className="text-[10px] font-bold text-brand-blue uppercase tracking-[3px] border-b border-slate-100 pb-2">
                     International Visits
                   </h4>
                   <ul className="space-y-2.5">

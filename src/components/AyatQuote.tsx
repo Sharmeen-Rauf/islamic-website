@@ -35,9 +35,9 @@ export default function AyatQuote() {
           <div className="h-[2px] w-12 bg-brand-green mx-auto" />
         </motion.div>
 
-        <div className="glass-dark p-12 md:p-20 rounded-[40px] relative">
+        <div className="bg-white shadow-2xl p-12 md:p-20 rounded-[40px] relative border border-slate-100">
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-[40px]">
-            <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" />
+            <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-slate-100/50 to-transparent animate-shimmer" />
           </div>
 
           <AnimatePresence mode="wait">
@@ -49,13 +49,13 @@ export default function AyatQuote() {
               transition={{ duration: 0.5 }}
               className="space-y-8"
             >
-              <h3 className="font-arabic text-4xl md:text-6xl text-white leading-relaxed">
+              <h3 className="font-arabic text-4xl md:text-6xl text-slate-900 leading-relaxed drop-shadow-sm">
                 {quotes[index].arabic}
               </h3>
-              <p className="font-serif italic text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+              <p className="font-serif italic text-xl md:text-2xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
                 {quotes[index].translation}
               </p>
-              <p className="text-[10px] uppercase tracking-widest text-brand-green font-bold">
+              <p className="text-[10px] uppercase tracking-widest text-brand-blue font-bold">
                 {quotes[index].ref}
               </p>
             </motion.div>
@@ -63,7 +63,7 @@ export default function AyatQuote() {
 
           <button 
             onClick={() => setIndex((prev) => (prev + 1) % quotes.length)}
-            className="mt-12 w-12 h-12 rounded-full glass flex items-center justify-center text-brand-green hover:bg-brand-green hover:text-white transition-all mx-auto"
+            className="mt-12 w-12 h-12 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-brand-blue hover:bg-brand-blue hover:text-white transition-all mx-auto shadow-sm hover:shadow-md"
           >
             <RefreshCw size={18} />
           </button>
