@@ -32,9 +32,28 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
   return (
     <header 
       className={`absolute top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-1 border-b border-slate-200' : 'bg-transparent py-2'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md pb-1 border-b border-slate-200' : 'bg-transparent pb-2'
       }`}
     >
+      {/* Ayatul Kursi Marquee */}
+      <div className="w-full py-1.5 bg-gradient-to-r from-brand-blue via-blue-600 to-brand-blue flex items-center overflow-hidden shadow-sm">
+        <motion.div
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 80 }}
+          className="flex whitespace-nowrap"
+        >
+          {/* Double content for seamless loop */}
+          {[1, 2].map((i) => (
+            <div key={i} className="flex items-center gap-16 px-8">
+              <span className="font-arabic text-sm md:text-base text-white font-medium tracking-widest leading-none drop-shadow-sm">
+                اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ
+              </span>
+              <span className="text-white/50 text-[10px]">✦</span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
       {/* Top Bar */}
       <div className="w-full bg-white/95 border-b border-slate-200 py-2 px-6 text-xs text-slate-700 backdrop-blur-md hidden lg:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -382,16 +401,6 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
         </motion.div>
       )}
 
-      {/* Bismillah Sub-bar */}
-      <div className="w-full h-[30px] bg-gradient-to-r from-brand-pink/10 via-brand-blue/10 to-brand-green/10 flex items-center justify-center border-y border-white/5 overflow-hidden">
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="font-arabic text-sm text-slate-400/60 tracking-[4px]"
-        >
-          بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-        </motion.p>
-      </div>
     </header>
   );
 }
