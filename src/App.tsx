@@ -6,6 +6,7 @@ import WelcomeSlider from './components/WelcomeSlider';
 import AyatQuote from './components/AyatQuote';
 import Mission from './components/Mission';
 import VideoShowcase from './components/VideoShowcase';
+import EventsMarquee from './components/EventsMarquee';
 import Books from './components/Books';
 import KhakiPage from './components/KhakiPage';
 import AboutPage from './components/AboutPage';
@@ -140,6 +141,7 @@ export default function App() {
             <ToursRoadmap onNavigate={setCurrentPage} />
             <Books />
             <VideoShowcase />
+            <EventsMarquee />
           </>
         );
     }
