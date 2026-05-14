@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp, Phone, Mail, Instagram, Facebook, Youtube, Calendar } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface HeaderProps {
@@ -32,24 +32,53 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'glass-dark py-2 shadow-2xl' : 'bg-transparent py-6'
+        isScrolled ? 'glass-dark py-1 shadow-2xl' : 'bg-transparent py-2'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      {/* Top Bar */}
+      <div className="w-full bg-slate-950/90 border-b border-white/5 py-2 px-6 text-xs text-slate-300 backdrop-blur-md hidden lg:block">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <a href="tel:+12247166575" className="flex items-center gap-2 hover:text-brand-pink transition-colors">
+              <Phone size={14} className="text-brand-pink" /> +1 224-716-6575
+            </a>
+            <a href="mailto:mastwaar@gmail.com" className="flex items-center gap-2 hover:text-brand-pink transition-colors">
+              <Mail size={14} className="text-brand-pink" /> mastwaar@gmail.com
+            </a>
+          </div>
+
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <a href="https://instagram.com/mastwaarqalandar" target="_blank" rel="noopener noreferrer" className="w-6 h-6 rounded-full glass flex items-center justify-center hover:text-brand-pink transition-colors">
+                <Instagram size={12} />
+              </a>
+              <a href="#" className="w-6 h-6 rounded-full glass flex items-center justify-center hover:text-brand-pink transition-colors">
+                <Facebook size={12} />
+              </a>
+              <a href="#" className="w-6 h-6 rounded-full glass flex items-center justify-center hover:text-brand-pink transition-colors">
+                <Youtube size={12} />
+              </a>
+            </div>
+
+            <button
+              onClick={() => handleNav('upcoming-events')}
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-pink text-white font-bold tracking-widest uppercase text-[10px] hover:scale-105 transition-all shadow-lg shadow-brand-pink/20"
+            >
+              <Calendar size={12} /> Upcoming Events
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between mt-2">
         <motion.div 
           onClick={() => handleNav('home')}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3 group cursor-pointer"
+          className="flex items-center group cursor-pointer"
         >
-          <div className="w-10 h-10 rounded-full glass flex items-center justify-center border border-white/20 shadow-lg group-hover:scale-110 transition-transform overflow-hidden bg-black/20">
-            <img src="/logo (6).png" alt="Muhabbat Mission Logo" className="w-full h-full object-contain p-1" />
-          </div>
-          <div className="hidden sm:block">
-            <h1 className="font-display text-xs tracking-widest text-white leading-tight">
-              MUHABBAT <span className="text-brand-pink">MISSION</span>
-            </h1>
-            <p className="text-[10px] text-slate-400 uppercase tracking-tighter">International</p>
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-full glass flex items-center justify-center border border-white/20 shadow-xl group-hover:scale-105 transition-transform overflow-hidden bg-black/20 p-1">
+            <img src="/logo (6).png" alt="Muhabbat Mission Logo" className="w-full h-full object-contain" />
           </div>
         </motion.div>
 
