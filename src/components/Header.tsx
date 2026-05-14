@@ -148,19 +148,19 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
                   </h4>
                   <ul className="space-y-2.5">
                     {[
-                      'Urs Hazrat Khaki Shah RA',
-                      'Urs Imam Hussain RA',
-                      '3 Day Spiritual Retreat',
-                      'Friday Prayer',
-                      'Eid-ul-Adha',
-                      'Eid-ul-Fitr'
+                      { name: 'Urs Hazrat Khaki Shah RA', path: 'events' },
+                      { name: 'Urs Imam Hussain RA', path: 'urs-imam-hussain' },
+                      { name: '3 Day Spiritual Retreat', path: 'events' },
+                      { name: 'Friday Prayer', path: 'events' },
+                      { name: 'Eid-ul-Adha', path: 'events' },
+                      { name: 'Eid-ul-Fitr', path: 'events' }
                     ].map((item) => (
-                      <li key={item}>
+                      <li key={item.name}>
                         <button
-                          onClick={() => handleNav('events')}
+                          onClick={() => handleNav(item.path)}
                           className="text-left text-xs text-slate-300 hover:text-brand-gold transition-colors block py-0.5"
                         >
-                          {item}
+                          {item.name}
                         </button>
                       </li>
                     ))}

@@ -13,6 +13,7 @@ import WelfarePage from './components/WelfarePage';
 import EventsPage from './components/EventsPage';
 import MissionPage from './components/MissionPage';
 import ToursPage from './components/ToursPage';
+import UrsImamHussainPage from './components/UrsImamHussainPage';
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from 'lucide-react';
 
 function Footer() {
@@ -106,6 +107,8 @@ export default function App() {
         return <MissionPage onNavigate={setCurrentPage} />;
       case 'tours':
         return <ToursPage />;
+      case 'urs-imam-hussain':
+        return <UrsImamHussainPage onNavigate={setCurrentPage} />;
       case 'about':
         return <AboutPage onNavigate={setCurrentPage} />;
       case 'education':
