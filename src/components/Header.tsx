@@ -31,7 +31,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`absolute top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled ? 'glass-dark py-1 shadow-2xl' : 'bg-transparent py-2'
       }`}
     >
