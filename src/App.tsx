@@ -14,6 +14,7 @@ import EventsPage from './components/EventsPage';
 import MissionPage from './components/MissionPage';
 import ToursPage from './components/ToursPage';
 import UrsImamHussainPage from './components/UrsImamHussainPage';
+import ToursRoadmap from './components/ToursRoadmap';
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from 'lucide-react';
 
 function Footer() {
@@ -131,6 +132,7 @@ export default function App() {
             <AyatQuote />
             <Mission />
             <Showcase />
+            <ToursRoadmap onNavigate={setCurrentPage} />
             <Books />
             <VideoShowcase />
           </>
