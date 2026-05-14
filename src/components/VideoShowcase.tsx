@@ -7,28 +7,28 @@ const videos = [
     views: "12K views", 
     time: "2 days ago",
     duration: "45:20",
-    image: "https://images.unsplash.com/photo-1584285429131-267cb7c251d5?auto=format&fit=crop&q=80&w=800" 
+    image: "/14-lahore-visit-01oct2022-ft-img.jpg" 
   },
   { 
     title: "Shafaat e Mustafa ﷺ | Dars e Masnavi | Jumma Bayan", 
     views: "18K views", 
     time: "1 week ago",
     duration: "52:10",
-    image: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&q=80&w=800" 
+    image: "/35-haripur-visit-25march2022-ft-img.jpg" 
   },
   { 
     title: "Barsaat of Karam | Annual Visit Khushab 2026", 
     views: "34K views", 
     time: "2 months ago",
     duration: "1:15:30",
-    image: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&q=80&w=800" 
+    image: "/asifurrehman-ilford-london-07sep2025-ft-img.jpg" 
   },
   { 
     title: "The Reality of Divine Love | Tasawwuf Session", 
     views: "45K views", 
     time: "3 months ago",
     duration: "38:45",
-    image: "https://images.unsplash.com/photo-1519818178121-5a21be14a1a6?auto=format&fit=crop&q=80&w=800" 
+    image: "/berlin-germany-visit-13sep2025-ft-img.jpg" 
   },
 ];
 

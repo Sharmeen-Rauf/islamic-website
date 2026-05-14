@@ -2,29 +2,29 @@ import { motion } from 'motion/react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-slate-950">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-slate-50">
       
       {/* Dynamic Background Image & Blur */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-40">
         <img 
           src="/bg-overlay.jpg" 
           alt="Atmospheric Background" 
-          className="w-full h-full object-cover opacity-10 mix-blend-screen"
+          className="w-full h-full object-cover mix-blend-overlay"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/80 to-slate-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/80 to-slate-50" />
       </div>
 
       {/* Vibrant Orbs for aesthetic lighting */}
-      <div className="absolute inset-0 z-0 mix-blend-screen">
+      <div className="absolute inset-0 z-0 mix-blend-multiply opacity-50">
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full bg-brand-pink/20 blur-[150px]" 
+          className="absolute top-[10%] right-[10%] w-[600px] h-[600px] rounded-full bg-brand-blue/20 blur-[150px]" 
         />
         <motion.div 
           animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.3, 0.1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-[-10%] left-[5%] w-[500px] h-[500px] rounded-full bg-brand-gold/10 blur-[150px]" 
+          className="absolute bottom-[-10%] left-[5%] w-[500px] h-[500px] rounded-full bg-brand-blue/10 blur-[150px]" 
         />
       </div>
 
@@ -50,10 +50,10 @@ export default function Hero() {
                 hidden: { opacity: 0, x: -30 },
                 visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: "easeOut" } }
               }}
-              className="font-arabic text-brand-gold text-lg md:text-xl lg:text-2xl leading-relaxed mb-4 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] whitespace-nowrap overflow-hidden"
+              className="font-arabic text-brand-blue text-lg md:text-xl lg:text-2xl leading-relaxed mb-4 whitespace-nowrap overflow-hidden"
             >
               <motion.span
-                animate={{ opacity: [0.5, 1, 0.5], textShadow: ["0px 0px 5px rgba(212,175,55,0.2)", "0px 0px 15px rgba(212,175,55,0.8)", "0px 0px 5px rgba(212,175,55,0.2)"] }}
+                animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 قلندر دوراں، شیخ کامل، صوفی شاعر، سفیر محبت الہی
@@ -65,7 +65,7 @@ export default function Hero() {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
               }}
-              className="font-arabic text-brand-gold text-4xl md:text-6xl lg:text-7xl font-bold mb-8 drop-shadow-[0_0_20px_rgba(212,175,55,0.6)]"
+              className="font-arabic text-brand-blue text-4xl md:text-6xl lg:text-7xl font-bold mb-8 drop-shadow-sm"
             >
               مخدوم محمود مستوار قلندر
             </motion.div>
@@ -76,9 +76,9 @@ export default function Hero() {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
               }}
-              className="font-display text-white text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide mb-3 drop-shadow-lg"
+              className="font-display text-slate-900 text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide mb-3 drop-shadow-sm"
             >
-              Makhdoom Mahmood <span className="text-gradient-pink">MASTWAAR</span> Qalandar
+              Makhdoom Mahmood <span className="text-brand-blue">MASTWAAR</span> Qalandar
             </motion.h2>
 
             <motion.h3 
@@ -86,7 +86,7 @@ export default function Hero() {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
               }}
-              className="text-brand-gold text-xl md:text-2xl font-serif italic mb-3"
+              className="text-brand-blue text-xl md:text-2xl font-serif italic mb-3"
             >
               The Reviver, Mystical Master, Sufi Poet
             </motion.h3>
@@ -96,7 +96,7 @@ export default function Hero() {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
               }}
-              className="text-slate-300 font-medium mb-10 tracking-widest uppercase text-xs"
+              className="text-slate-600 font-medium mb-10 tracking-widest uppercase text-xs"
             >
               Ambassador of Divine Love
             </motion.h4>
@@ -109,7 +109,7 @@ export default function Hero() {
             >
               <a 
                 href="#mission" 
-                className="inline-block px-10 py-4 bg-brand-pink hover:bg-brand-pink/80 text-white rounded-full font-bold text-xs uppercase tracking-[2px] shadow-[0_0_30px_rgba(233,30,140,0.4)] hover:shadow-[0_0_40px_rgba(233,30,140,0.6)] transition-all hover:-translate-y-1"
+                className="inline-block px-10 py-4 bg-brand-blue hover:bg-blue-700 text-white rounded-full font-bold text-xs uppercase tracking-[2px] shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 Read More
               </a>
@@ -127,10 +127,10 @@ export default function Hero() {
               <img 
                 src="/peer-saab (2).png" 
                 alt="Makhdoom Mahmood Mastwaar Qalandar" 
-                className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-20 relative"
+                className="w-full h-auto object-contain drop-shadow-2xl z-20 relative"
               />
               {/* Elegant Glow behind image */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-pink/30 blur-[100px] rounded-full -z-10 mix-blend-screen" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-blue/10 blur-[100px] rounded-full -z-10 mix-blend-multiply" />
             </div>
           </motion.div>
 
@@ -149,9 +149,9 @@ export default function Hero() {
             { label: 'Since', value: '1994' },
             { label: 'Continents', value: '4+' },
           ].map((stat, i) => (
-            <div key={i} className="glass p-6 rounded-2xl text-center">
-              <div className="font-display text-2xl text-gradient-gold mb-1">{stat.value}</div>
-              <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{stat.label}</div>
+            <div key={i} className="bg-white border border-slate-100 shadow-sm p-6 rounded-2xl text-center">
+              <div className="font-display text-2xl text-brand-blue font-bold mb-1">{stat.value}</div>
+              <div className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">{stat.label}</div>
             </div>
           ))}
         </motion.div>
