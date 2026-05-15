@@ -16,8 +16,9 @@ import EventsPage from './components/EventsPage';
 import MissionPage from './components/MissionPage';
 import ToursPage from './components/ToursPage';
 import UrsImamHussainPage from './components/UrsImamHussainPage';
-import ToursRoadmap from './components/ToursRoadmap';
 import UpcomingEventsPage from './components/UpcomingEventsPage';
+import DarbarSharifPage from './components/DarbarSharifPage';
+import UrsKhakiPage from './components/UrsKhakiPage';
 import { Mail, Phone, MapPin, Instagram, Youtube, Facebook } from 'lucide-react';
 
 function Footer() {
@@ -123,6 +124,10 @@ export default function App() {
         return <WelfarePage />;
       case 'events':
         return <EventsPage onNavigate={setCurrentPage} />;
+      case 'darbar-sharif':
+        return <DarbarSharifPage onNavigate={setCurrentPage} />;
+      case 'urs-khaki':
+        return <UrsKhakiPage onNavigate={setCurrentPage} />;
       case 'literature':
         return (
           <div className="pt-20">

@@ -53,11 +53,11 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
   ];
 
   return (
-    <div className="pt-32 pb-24 bg-slate-950 min-h-screen relative overflow-hidden text-slate-300">
+    <div className="pt-32 pb-24 bg-slate-50 min-h-screen relative overflow-hidden text-slate-600">
       {/* Background Glows */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
-        <div className="absolute top-[15%] left-[20%] w-[500px] h-[500px] rounded-full bg-brand-gold/20 blur-[150px]" />
-        <div className="absolute bottom-[15%] right-[20%] w-[500px] h-[500px] rounded-full bg-brand-pink/20 blur-[150px]" />
+        <div className="absolute top-[15%] left-[20%] w-[500px] h-[500px] rounded-full bg-brand-blue/10 blur-[150px]" />
+        <div className="absolute bottom-[15%] right-[20%] w-[500px] h-[500px] rounded-full bg-brand-blue/5 blur-[150px]" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -66,7 +66,7 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 glass px-6 py-2 rounded-full text-xs uppercase tracking-[4px] text-brand-gold font-bold mb-6 border border-brand-gold/20"
+            className="inline-flex items-center gap-2 bg-white shadow-sm px-6 py-2 rounded-full text-xs uppercase tracking-[4px] text-brand-blue font-bold mb-6 border border-brand-blue/20"
           >
             <Calendar size={14} /> Sacred Gatherings
           </motion.div>
@@ -74,15 +74,15 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-display text-5xl md:text-7xl text-white mb-6 leading-tight"
+            className="font-display text-5xl md:text-7xl text-slate-900 mb-6 leading-tight"
           >
-            Events & <span className="text-gradient-gold">Congregations</span>
+            Events & <span className="text-brand-blue italic">Congregations</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="font-serif italic text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto"
+            className="font-serif italic text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto"
           >
             Join thousands of seekers in transformative spiritual gatherings, Dhikr, retreats, and sacred commemorations.
           </motion.p>
@@ -97,12 +97,12 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               viewport={{ once: true }}
-              className="glass-dark p-8 md:p-12 rounded-[40px] border border-white/10 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center group relative"
+              className="bg-white p-8 md:p-12 rounded-[40px] border border-slate-100 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center group relative"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-brand-gold/10 transition-colors pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-slate-50 rounded-full blur-3xl group-hover:bg-brand-blue/5 transition-colors pointer-events-none" />
 
               <div className="lg:col-span-5 w-full">
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden glass p-2 border border-white/10 shadow-xl group-hover:border-brand-gold/30 transition-all">
+                <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-white p-2 border border-slate-100 shadow-xl group-hover:border-brand-blue/30 transition-all">
                   <img 
                     src={e.image} 
                     alt={e.title}
@@ -113,26 +113,26 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
 
               <div className="lg:col-span-7 space-y-6">
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className={`px-4 py-1.5 rounded-full glass text-[10px] uppercase tracking-widest text-${e.color} font-bold border border-${e.color}/30 flex items-center gap-2`}>
+                  <span className={`px-4 py-1.5 rounded-full bg-slate-50 text-[10px] uppercase tracking-widest text-slate-600 font-bold border border-slate-200 flex items-center gap-2`}>
                     <Clock size={12} /> {e.timing}
                   </span>
                 </div>
 
-                <h2 className="font-display text-3xl md:text-4xl text-white group-hover:text-brand-gold transition-colors leading-tight">
+                <h2 className="font-display text-3xl md:text-4xl text-slate-900 group-hover:text-brand-blue transition-colors leading-tight">
                   {e.title}
                 </h2>
 
-                <p className="font-serif text-slate-300 text-base md:text-lg leading-relaxed">
+                <p className="font-serif text-slate-700 text-base md:text-lg leading-relaxed">
                   {e.desc}
                 </p>
 
                 {e.hasKhakiLink && (
-                  <div className="pt-4 border-t border-white/10">
+                  <div className="pt-4 border-t border-slate-100">
                     <button
-                      onClick={() => onNavigate('khaki')}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold rounded-full text-xs uppercase tracking-widest font-bold hover:bg-brand-gold hover:text-black transition-all shadow-lg"
+                      onClick={() => onNavigate('darbar-sharif')}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-brand-blue text-white rounded-full text-xs uppercase tracking-widest font-bold hover:bg-blue-700 transition-all shadow-lg"
                     >
-                      <BookOpen size={14} /> To learn more about Syed Rasool Shah Khaki, click here <ArrowRight size={14} />
+                      <BookOpen size={14} /> To learn more about Darbar Sharif & Urs Khaki, click here <ArrowRight size={14} />
                     </button>
                   </div>
                 )}
@@ -142,13 +142,13 @@ export default function EventsPage({ onNavigate }: EventsPageProps) {
         </div>
 
         {/* Contact info link */}
-        <div className="text-center pt-8 border-t border-white/10">
-          <p className="text-slate-400 text-sm mb-4">
+        <div className="text-center pt-8 border-t border-slate-100">
+          <p className="text-slate-500 text-sm mb-4">
             For more information or to inquire about upcoming sacred schedules:
           </p>
           <a 
             href="#contact" 
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-pink text-white font-bold text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-brand-pink/30"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-blue text-white font-bold text-xs uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl"
           >
             Contact Us <ArrowRight size={16} />
           </a>

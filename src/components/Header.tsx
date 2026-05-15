@@ -196,7 +196,8 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
                   </h4>
                   <ul className="space-y-2.5">
                     {[
-                      { name: 'Urs Hazrat Khaki Shah RA', path: 'events' },
+                      { name: 'Darbar Sharif', path: 'darbar-sharif' },
+                      { name: 'Urs Hazrat Khaki Shah RA', path: 'urs-khaki' },
                       { name: 'Urs Imam Hussain RA', path: 'urs-imam-hussain' },
                       { name: '3 Day Spiritual Retreat', path: 'events' },
                       { name: 'Friday Prayer', path: 'events' },
@@ -206,7 +207,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
                       <li key={item.name}>
                         <button
                           onClick={() => handleNav(item.path)}
-                          className="text-left text-xs text-slate-300 hover:text-brand-gold transition-colors block py-0.5"
+                          className="text-left text-xs text-slate-600 hover:text-brand-gold transition-colors block py-0.5"
                         >
                           {item.name}
                         </button>
@@ -231,7 +232,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
                       <li key={item}>
                         <button
                           onClick={() => handleNav('tours')}
-                          className="text-left text-xs text-slate-300 hover:text-brand-pink transition-colors block py-0.5"
+                          className="text-left text-xs text-slate-600 hover:text-brand-pink transition-colors block py-0.5"
                         >
                           {item}
                         </button>
@@ -255,7 +256,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
                       <li key={item}>
                         <button
                           onClick={() => handleNav('tours')}
-                          className="text-left text-xs text-slate-300 hover:text-brand-blue transition-colors block py-0.5"
+                          className="text-left text-xs text-slate-600 hover:text-brand-blue transition-colors block py-0.5"
                         >
                           {item}
                         </button>
@@ -269,7 +270,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
           <button
             onClick={() => handleNav('literature')}
-            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'literature' ? 'text-brand-gold font-bold' : 'text-slate-300 hover:text-brand-gold'}`}
+            className={`px-4 py-2 text-[10px] uppercase tracking-widest transition-colors relative group ${currentPage === 'literature' ? 'text-brand-gold font-bold' : 'text-slate-600 hover:text-brand-gold'}`}
           >
             Literature
             <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-brand-gold transition-all ${currentPage === 'literature' ? 'w-1/2' : 'w-0 group-hover:w-1/2'}`} />
@@ -297,18 +298,18 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 w-full glass-dark border-t border-white/5 py-8 px-6 md:hidden flex flex-col items-center gap-4 text-center z-50 max-h-[80vh] overflow-y-auto"
+          className="absolute top-full left-0 w-full bg-white shadow-2xl border-t border-slate-100 py-8 px-6 md:hidden flex flex-col items-center gap-4 text-center z-50 max-h-[80vh] overflow-y-auto"
         >
           <button 
             onClick={() => handleNav('home')}
-            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'home' ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'home' ? 'text-brand-pink font-bold' : 'text-slate-600'}`}
           >
             Home
           </button>
 
           <button 
             onClick={() => handleNav('mission')}
-            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'mission' ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'mission' ? 'text-brand-pink font-bold' : 'text-slate-600'}`}
           >
             Mission
           </button>
@@ -316,7 +317,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
           <div className="w-full flex flex-col items-center">
             <button 
               onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
-              className={`py-2 text-xs uppercase tracking-[3px] flex items-center gap-2 ${['about', 'education', 'welfare'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+              className={`py-2 text-xs uppercase tracking-[3px] flex items-center gap-2 ${['about', 'education', 'welfare'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-600'}`}
             >
               About Us {mobileAboutOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </button>
@@ -325,19 +326,19 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
               <div className="flex flex-col gap-3 py-3 w-full bg-white/5 rounded-2xl my-2">
                 <button 
                   onClick={() => handleNav('about')}
-                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'about' ? 'text-brand-pink font-bold' : 'text-slate-400'}`}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'about' ? 'text-brand-pink font-bold' : 'text-slate-500'}`}
                 >
                   About Us Core
                 </button>
                 <button 
                   onClick={() => handleNav('education')}
-                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'education' ? 'text-brand-green font-bold' : 'text-slate-400'}`}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'education' ? 'text-brand-green font-bold' : 'text-slate-500'}`}
                 >
                   Education
                 </button>
                 <button 
                   onClick={() => handleNav('welfare')}
-                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'welfare' ? 'text-brand-blue font-bold' : 'text-slate-400'}`}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'welfare' ? 'text-brand-blue font-bold' : 'text-slate-500'}`}
                 >
                   Welfare
                 </button>
@@ -347,7 +348,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
           <button 
             onClick={() => handleNav('khaki')}
-            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'khaki' ? 'text-brand-gold font-bold' : 'text-slate-300'}`}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'khaki' ? 'text-brand-gold font-bold' : 'text-slate-600'}`}
           >
             Syed Rasool Shah Khaki
           </button>
@@ -355,7 +356,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
           <div className="w-full flex flex-col items-center">
             <button 
               onClick={() => setMobileEventsOpen(!mobileEventsOpen)}
-              className={`py-2 text-xs uppercase tracking-[3px] flex items-center gap-2 ${['events', 'tours'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-300'}`}
+              className={`py-2 text-xs uppercase tracking-[3px] flex items-center gap-2 ${['events', 'tours'].includes(currentPage) ? 'text-brand-pink font-bold' : 'text-slate-600'}`}
             >
               Events & Tours {mobileEventsOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
             </button>
@@ -363,20 +364,32 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
             {mobileEventsOpen && (
               <div className="flex flex-col gap-3 py-3 w-full bg-white/5 rounded-2xl my-2">
                 <button 
+                  onClick={() => handleNav('darbar-sharif')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'darbar-sharif' ? 'text-brand-gold font-bold' : 'text-slate-500'}`}
+                >
+                  Darbar Sharif
+                </button>
+                <button 
+                  onClick={() => handleNav('urs-khaki')}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'urs-khaki' ? 'text-brand-gold font-bold' : 'text-slate-500'}`}
+                >
+                  Urs Hazrat Khaki Shah RA
+                </button>
+                <button 
                   onClick={() => handleNav('events')}
-                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'events' ? 'text-brand-gold font-bold' : 'text-slate-400'}`}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'events' ? 'text-brand-gold font-bold' : 'text-slate-500'}`}
                 >
                   Darbar Sharif Events
                 </button>
                 <button 
                   onClick={() => handleNav('tours')}
-                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'tours' ? 'text-brand-pink font-bold' : 'text-slate-400'}`}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'tours' ? 'text-brand-pink font-bold' : 'text-slate-500'}`}
                 >
                   National Visits
                 </button>
                 <button 
                   onClick={() => handleNav('tours')}
-                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'tours' ? 'text-brand-blue font-bold' : 'text-slate-400'}`}
+                  className={`text-xs uppercase tracking-[2px] py-1 ${currentPage === 'tours' ? 'text-brand-blue font-bold' : 'text-slate-500'}`}
                 >
                   International Visits
                 </button>
@@ -386,7 +399,7 @@ export default function Header({ currentPage = 'home', onNavigate = () => {} }: 
 
           <button 
             onClick={() => handleNav('literature')}
-            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'literature' ? 'text-brand-gold font-bold' : 'text-slate-300'}`}
+            className={`py-2 text-xs uppercase tracking-[3px] ${currentPage === 'literature' ? 'text-brand-gold font-bold' : 'text-slate-600'}`}
           >
             Literature
           </button>
